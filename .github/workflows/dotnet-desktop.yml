@@ -25,14 +25,14 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
 
     - name: Restore Packages
-      run: nuget restore /MachineKey/AspDotNetWrapper/AspDotNetWrapper.sln
+      run: nuget restore MachineKey/AspDotNetWrapper/AspDotNetWrapper.sln
 
     - name: Create folder
       run: |
           mkdir -p 'D:/outputrel/outputrel'
 
     - name: Build solution
-      run: msbuild /MachineKey/AspDotNetWrapper/AspDotNetWrapper.sln -t:rebuild -property:Configuration=Release -verbosity:diag /p:OutputPath='D:/outputrel/outputrel'
+      run: msbuild MachineKey/AspDotNetWrapper/AspDotNetWrapper.sln -t:rebuild -property:Configuration=Release -verbosity:diag /p:OutputPath='D:/outputrel/outputrel'
       
     - name: Upload artifact
       uses: actions/upload-artifact@v2
